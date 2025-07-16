@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Humanizer - Make Your Resume 100% Human</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-user-edit"></i>
+                <h1>Resume Humanizer</h1>
+            </div>
+            <p class="subtitle">Transform AI-generated resumes into 100% human-written content</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Upload Your Resume</h3>
+                    <p>Drag and drop your resume here or click to browse</p>
+                    <p class="supported-formats">Supported formats: PDF, DOC, DOCX, TXT</p>
+                    <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt" hidden>
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                        Choose File
+                    </button>
+                </div>
+            </div>
+
+            <div class="processing-section" id="processingSection" style="display: none;">
+                <div class="processing-content">
+                    <div class="spinner"></div>
+                    <h3>Humanizing Your Resume...</h3>
+                    <p>This may take a few moments</p>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2>Humanization Complete!</h2>
+                    <p>Your resume has been transformed to appear 100% human-written</p>
+                </div>
+
+                <div class="comparison-container">
+                    <div class="text-panel">
+                        <h3><i class="fas fa-robot"></i> Original (AI-Generated)</h3>
+                        <div class="text-content" id="originalText"></div>
+                    </div>
+                    
+                    <div class="text-panel">
+                        <h3><i class="fas fa-user"></i> Humanized Version</h3>
+                        <div class="text-content" id="humanizedText"></div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="downloadText()">
+                        <i class="fas fa-download"></i> Download Humanized Resume
+                    </button>
+                    <button class="btn btn-primary" onclick="resetApp()">
+                        <i class="fas fa-redo"></i> Process Another Resume
+                    </button>
+                </div>
+            </div>
+
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Error</h3>
+                    <p id="errorMessage"></p>
+                    <button class="btn btn-primary" onclick="resetApp()">Try Again</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>AI Detection Proof</h4>
+                    <p>Eliminates AI-generated patterns</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-language"></i>
+                    <h4>Natural Language</h4>
+                    <p>Uses human-like vocabulary and structure</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-user-check"></i>
+                    <h4>Personal Touch</h4>
+                    <p>Adds authentic personal elements</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
